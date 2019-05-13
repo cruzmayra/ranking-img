@@ -16,14 +16,9 @@ class App extends React.Component {
       ],
       name: '',
       next: false,
-      positions: [1,2,3],
-      ranking:{}
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
-    this.toggleSelected = this.toggleSelected.bind(this)
-    this.assignPosition = this.assignPosition.bind(this)
-    this.styleWithPosition = this.styleWithPosition.bind(this)
     this.stringToSheets = this.stringToSheets.bind(this)
   }
 
@@ -36,42 +31,33 @@ class App extends React.Component {
     this.setState({next: true})
   }
 
-  toggleSelected(e) {
-    const elem = e.target
-    elem.classList.toggle('selected')
-    this.assignPosition(elem)
+  onDragStart = e => {
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/html", e.target.parentNode);
+    e.dataTransfer.setDragImage(e.target.parentNode, 20, 20);
   }
 
-  assignPosition (elem) {
-    const selected = elem.classList.contains('selected')
-    const categoria = elem.dataset.categoria
-    const {positions,ranking} = this.state
-    if(selected) {
-      let position =  positions.shift()
-      this.setState({
-        ranking: {
-          ...ranking,
-          [categoria]: position
-        },
-        positions
-      })
-      this.styleWithPosition(elem,position)
-    } else {
-      let position = ranking[categoria]
-      positions.push(position)
-      positions.sort()
-      delete ranking[categoria]
-      this.setState({
-        positions,
-        ranking
-      })
-      this.styleWithPosition(elem,position)
+
+  onDragOver = index => {
+    const draggedOverItem = this.state.items[index];
+    // if the item is dragged over itself, ignore
+    if (this.draggedItem === draggedOverItem) {
+      return;
     }
-  }
 
-  styleWithPosition(elem,position) {
-    elem.classList.toggle('position-' + position)
-  }
+    // filter out the currently dragged item
+    let items = this.state.items.filter(item => item !== this.draggedItem);
+
+    // add the dragged item after the dragged over item
+    items.splice(index, 0, this.draggedItem);
+
+    // this.setState({ items });
+    // console.log(items)
+  };
+
+  onDragEnd = () => {
+    this.draggedIdx = null;
+};
 
   stringToSheets() {
     const {name, ranking} = this.state
@@ -85,16 +71,16 @@ class App extends React.Component {
   }
 
   render() {
-    const {next, name, positions, items} = this.state
+    const {next, name, items} = this.state
     return (
       <div className="App">
         {
           next
           ? <Ranking
               items={items}
-              positions={positions}
-              stringToSheets={this.stringToSheets}
-              toggleSelected={this.toggleSelected} />
+              onDragStart={this.onDragStart}
+              onDragOver={this.onDragOver}
+              onDragEnd={this.onDragEnd}/>
           : <Welcome
               name={name}
               handleChange={this.handleChange}
