@@ -10,9 +10,9 @@ class App extends React.Component {
     super(props)
     this.state = {
       items: [
-        {'categoria':'gatos', 'image':'http://i63.tinypic.com/2zqzyv6.jpg'},
-        {'categoria': 'perros', 'image': 'http://i65.tinypic.com/23r3c61.jpg' },
-        {'categoria':'loros', 'image': 'http://i68.tinypic.com/2mqti5z.jpg'}
+        {'categoria':'loros', 'image': 'http://i68.tinypic.com/iwjddz.jpg'},
+        {'categoria':'gatos', 'image':'http://i63.tinypic.com/2wpow9t.jpg'},
+        {'categoria': 'perros', 'image': 'http://i65.tinypic.com/5eddvk.jpg' }
       ],
       name: '',
       next: false,
@@ -31,7 +31,7 @@ class App extends React.Component {
 
   calcHeight = () => {
     const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-    document.querySelector('.App').style['min-height'] = height + 'px'
+    document.querySelector('#root').style['min-height'] = height + 'px'
   }
 
   handleChange = (e) => {
@@ -44,6 +44,7 @@ class App extends React.Component {
   }
 
   toggleSelected = (e) => {
+    e.stopPropagation()
     const elem = e.target
     elem.classList.toggle('selected')
     this.assignPosition(elem)

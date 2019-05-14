@@ -1,0 +1,280 @@
+.App {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+#root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  width: 100%;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  background: #FD6592;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  height: 40px;
+  margin: 15px auto;
+  text-transform: uppercase;
+  width: 150px;
+}
+
+.btn:disabled {
+  opacity: 0.8;
+}
+
+.indications {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#welcomeSection {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #3E4FA5;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+#welcomeSection .infoContainer {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 600px;
+  padding: 25px;
+  width: 100%;
+}
+
+#welcomeSection .infoContainer h2 {
+  font-size: 30px;
+  margin: 0;
+}
+
+#welcomeSection .infoContainer .formFake {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 300px;
+  margin-top: 15px;
+  min-height: 80px;
+  width: 100%;
+}
+
+#welcomeSection .infoContainer .formFake input {
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  height: 30px;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+#categories {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #3E4FA5;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+#categories .rankingContainer {
+  max-width: 600px;
+  padding: 25px;
+  width: 100%;
+}
+
+#categories .rankingContainer .categoriesContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria {
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  height: 200px;
+  margin: 15px;
+  position: relative;
+  width: 200px;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank {
+  height: 100%;
+  width: 100%;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank.selected {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank.selected.position-1 {
+  background: rgba(0, 0, 0, 0.7) url("./loved.png");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank.selected.position-1::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #FD6592;
+  border-left: 30px solid #FD6592;
+  border-bottom: 30px solid transparent;
+  padding: 0;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank.selected.position-1:after {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  content: '1';
+  height: 35px;
+  left: 0;
+  position: absolute;
+  width: 35px;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank.selected.position-2 {
+  background: rgba(0, 0, 0, 0.7) url("./neutral.png");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank.selected.position-2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #FD6592;
+  border-left: 30px solid #FD6592;
+  border-bottom: 30px solid transparent;
+  padding: 0;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank.selected.position-2:after {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  content: '2';
+  height: 35px;
+  left: 0;
+  position: absolute;
+  width: 35px;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank.selected.position-3 {
+  background: rgba(0, 0, 0, 0.7) url("./sad.png");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank.selected.position-3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #FD6592;
+  border-left: 30px solid #FD6592;
+  border-bottom: 30px solid transparent;
+  padding: 0;
+}
+
+#categories .rankingContainer .categoriesContainer .categoria .rank.selected.position-3:after {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  content: '3';
+  height: 35px;
+  left: 0;
+  position: absolute;
+  width: 35px;
+}
+
+@media (max-width: 600px) {
+  #categories .rankingContainer .categoriesContainer .categoria {
+    height: 180px;
+    margin: 9px;
+    width: 180px;
+  }
+}
+/*# sourceMappingURL=App.css.map */

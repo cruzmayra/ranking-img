@@ -14,10 +14,13 @@ class Ranking extends React.Component {
               return (
                 <div
                   className='categoria'
-                  data-categoria={item['categoria']}
                   key={item['categoria']}
                   onClick={toggleSelected}
                   style={{backgroundImage: 'url(' + item['image'] +')'}}>
+                  <div
+                    className="rank"
+                    data-categoria={item['categoria']}>
+                  </div>
                 </div>
               )
             })
