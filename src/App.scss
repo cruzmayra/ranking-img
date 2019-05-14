@@ -128,15 +128,6 @@
             width: 100%;
           }
           &.position-1 {
-            &:before {
-              background: #FD6592;
-              height: 30px;
-              left: 0;
-              position: absolute;
-              top:0;
-              width: 30px;
-              z-index: 99;
-            }
             &:after {
               content: '1';
               background: rgba(0, 0, 0, 0.7) url('./loved.png');
