@@ -1,0 +1,165 @@
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+// .App-logo {
+//   animation: App-logo-spin infinite 20s linear;
+//   height: 40vmin;
+//   pointer-events: none;
+// }
+
+// .App-header {
+//   background-color: #282c34;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: calc(10px + 2vmin);
+//   color: white;
+// }
+
+// .App-link {
+//   color: #61dafb;
+// }
+
+// @keyframes App-logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  margin: 15px auto;
+  text-transform: uppercase;
+  width: 150px;
+  &.start {
+    // background: #F9C861;
+    background: #FD6592;
+    color: #fff;
+    &:disabled {
+      opacity: 0.8;
+    }
+  }
+}
+
+#welcomeSection {
+  align-items: center;
+  background: #3E4FA5;
+  color: #fff;
+  display: flex;
+  height: 100vh;
+  // height: 100%; /* ver como calcular tamaño dinámico */
+  justify-content: center;
+  width: 100%;
+  .infoContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+    padding: 25px;
+    width: 100%;
+    h2 {
+      font-size: 30px;
+      margin: 0;
+    }
+    p{
+      font-size: 18px;
+    }
+    .formFake {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 300px;
+      margin-top: 15px;
+      min-height: 80px;
+      width: 100%;
+      input {
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        height: 30px;
+        margin: 10px 0;
+        padding: 0 10px;
+      }
+    }
+  }
+}
+
+#categories {
+  align-items: center;
+  background: #F0F1F8;
+  color: #3E4FA5;
+  display: flex;
+  // height: 100vh;  
+  max-height: 100%;
+  justify-content: center;
+  width: 100%;
+  .rankingContainer {
+    height: 100%;
+    max-width: 600px;
+    padding: 25px;
+    width: 100%;
+    .categoriesContainer {
+      display:flex;
+      justify-content:center;
+      flex-wrap: wrap;
+      .categoria {
+        border: 1px solid #282c34;
+        background-position: center;
+        background-size: cover;
+        height: 200px;
+        margin: 15px;
+        position: relative;
+        width: 200px;
+        &.selected {
+          &:after {
+            align-items: center;
+            color: #fff;
+            content: '';
+            display:flex;
+            height: 100%;
+            justify-content: center;
+            position: absolute;
+            width: 100%;
+          }
+          &.position-1 {
+            &:after {
+              content: '1';
+              background: rgba(0, 0, 0, 0.7) url('./peppermint_logo.png');
+              background-size: 50%;
+              background-position: bottom;
+              background-repeat: no-repeat;
+            }
+          }
+          &.position-2 {
+            &:after {
+              content: '2';
+              background: rgba(0, 0, 0, 0.7) url('./Recurso-2.png');
+              background-size: 50%;
+              background-position: bottom;
+              background-repeat: no-repeat;
+            }
+          }
+          &.position-3 {
+            &:after {
+              content: '3';
+              background: rgba(0, 0, 0, 0.7) url('./big_balloon_logo.png');
+              background-size: 50%;
+              background-position: bottom;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+      }
+    }
+  }
+}

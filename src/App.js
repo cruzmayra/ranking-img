@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
 // Components
 import Welcome from './Components/Welcome'
@@ -19,30 +19,38 @@ class App extends React.Component {
       positions: [1,2,3],
       ranking:{}
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
-    this.toggleSelected = this.toggleSelected.bind(this)
-    this.assignPosition = this.assignPosition.bind(this)
-    this.styleWithPosition = this.styleWithPosition.bind(this)
-    this.stringToSheets = this.stringToSheets.bind(this)
   }
 
-  handleChange(e) {
+  componentDidMount () {
+    this.calcHeight()
+
+    window.addEventListener('resize', () => {
+      this.calcHeight()
+    })
+  }
+
+  calcHeight = () => {
+    const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+    document.querySelector('.App').style['min-height'] = height + 'px'
+  }
+
+
+  handleChange = (e) => {
     const {value, name} = e.target
     this.setState({ [name]: value})
   }
 
-  handleClick() {
+  handleClick = () => {
     this.setState({next: true})
   }
 
-  toggleSelected(e) {
+  toggleSelected = (e) => {
     const elem = e.target
     elem.classList.toggle('selected')
     this.assignPosition(elem)
   }
 
-  assignPosition (elem) {
+  assignPosition = (elem) => {
     const selected = elem.classList.contains('selected')
     const categoria = elem.dataset.categoria
     const {positions,ranking} = this.state
@@ -69,19 +77,28 @@ class App extends React.Component {
     }
   }
 
-  styleWithPosition(elem,position) {
+  styleWithPosition = (elem,position) => {
     elem.classList.toggle('position-' + position)
   }
 
-  stringToSheets() {
+  sendData = () => {
     const {name, ranking} = this.state
     let string = ''
-   
+
     for(const key in ranking) {
-      string += key + '=' + ranking[key] + ', '
+      string += key + '=' + ranking[key] + ','
     }
 
     console.log(string + 'name=' + name)
+
+    const url = process.env.REACT_APP_GOOGLE_URL
+    const search = this.props.location.search + '&name=' + name
+
+    this.sendToGoogle(url, search)
+  }
+
+  sendToGoogle = (url, search) => {
+    console.log(url, search)
   }
 
   render() {
@@ -93,7 +110,7 @@ class App extends React.Component {
           ? <Ranking
               items={items}
               positions={positions}
-              stringToSheets={this.stringToSheets}
+              sendData={this.sendData}
               toggleSelected={this.toggleSelected} />
           : <Welcome
               name={name}
