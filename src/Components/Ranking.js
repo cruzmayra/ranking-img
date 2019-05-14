@@ -7,7 +7,7 @@ class Ranking extends React.Component {
     return (
       <section id="categories">
         <div className="rankingContainer">
-          <p>hendrerit dolor magna eget est lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant</p>
+          <p className="indications">Lorem ipsum dolor amet bespoke street art subway tile, YOLO banjo vexillologist cardigan vape air plant twee pinterest butcher.</p>
           <div className="categoriesContainer">
           {
             items.map(function(item) {
@@ -23,7 +23,7 @@ class Ranking extends React.Component {
             })
           }
           </div>
-          <button disabled={positions.length > 0} onClick={sendData}>ENVIAR</button>
+          <button className="btn" disabled={positions.length > 0} onClick={sendData}>ENVIAR</button>
         </div>
       </section>
     )

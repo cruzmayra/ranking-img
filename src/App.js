@@ -34,7 +34,6 @@ class App extends React.Component {
     document.querySelector('.App').style['min-height'] = height + 'px'
   }
 
-
   handleChange = (e) => {
     const {value, name} = e.target
     this.setState({ [name]: value})
@@ -91,15 +90,15 @@ class App extends React.Component {
 
     console.log(string + 'name=' + name)
 
-    const url = process.env.REACT_APP_GOOGLE_URL
-    const search = this.props.location.search + '&name=' + name
+    // const url = process.env.REACT_APP_GOOGLE_URL
+    // const search = this.props.location.search + '&name=' + name
 
-    this.sendToGoogle(url, search)
+    // this.sendToGoogle(url, search)
   }
 
-  sendToGoogle = (url, search) => {
-    console.log(url, search)
-  }
+  // sendToGoogle = (url, search) => {
+  //   console.log(url, search)
+  // }
 
   render() {
     const {next, name, positions, items} = this.state

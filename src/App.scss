@@ -1,6 +1,6 @@
 .App {
+  position: relative;
   text-align: center;
-  height: 100%;
 }
 
 // .App-logo {
@@ -36,18 +36,20 @@
 .btn {
   border: none;
   border-radius: 10px;
+  background: #FD6592;
+  color: #fff;
+  cursor: pointer;
   height: 40px;
   margin: 15px auto;
   text-transform: uppercase;
   width: 150px;
-  &.start {
-    // background: #F9C861;
-    background: #FD6592;
-    color: #fff;
-    &:disabled {
-      opacity: 0.8;
-    }
+  &:disabled {
+    opacity: 0.8;
   }
+}
+
+.indications {
+  font-size: 18px;
 }
 
 #welcomeSection {
@@ -56,7 +58,6 @@
   color: #fff;
   display: flex;
   height: 100vh;
-  // height: 100%; /* ver como calcular tamaño dinámico */
   justify-content: center;
   width: 100%;
   .infoContainer {
@@ -70,9 +71,6 @@
     h2 {
       font-size: 30px;
       margin: 0;
-    }
-    p{
-      font-size: 18px;
     }
     .formFake {
       display: flex;
@@ -96,15 +94,13 @@
 
 #categories {
   align-items: center;
-  background: #F0F1F8;
-  color: #3E4FA5;
+  background: #3E4FA5;
+  color: #fff;
   display: flex;
-  // height: 100vh;  
-  max-height: 100%;
+  height: 100vh;
   justify-content: center;
   width: 100%;
   .rankingContainer {
-    height: 100%;
     max-width: 600px;
     padding: 25px;
     width: 100%;
@@ -113,51 +109,75 @@
       justify-content:center;
       flex-wrap: wrap;
       .categoria {
-        border: 1px solid #282c34;
         background-position: center;
         background-size: cover;
+        border-radius: 5px;
+        border: 2px solid #fff;
         height: 200px;
         margin: 15px;
         position: relative;
         width: 200px;
         &.selected {
           &:after {
-            align-items: center;
             color: #fff;
-            content: '';
-            display:flex;
             height: 100%;
-            justify-content: center;
+            left: 0;
             position: absolute;
+            top: 0;
+            text-align: left;
             width: 100%;
           }
           &.position-1 {
+            &:before {
+              background: #FD6592;
+              height: 30px;
+              left: 0;
+              position: absolute;
+              top:0;
+              width: 30px;
+              z-index: 99;
+            }
             &:after {
               content: '1';
-              background: rgba(0, 0, 0, 0.7) url('./peppermint_logo.png');
+              background: rgba(0, 0, 0, 0.7) url('./loved.png');
               background-size: 50%;
-              background-position: bottom;
+              background-position: center;
               background-repeat: no-repeat;
             }
           }
           &.position-2 {
             &:after {
               content: '2';
-              background: rgba(0, 0, 0, 0.7) url('./Recurso-2.png');
+              background: rgba(0, 0, 0, 0.7) url('./neutral.png');
               background-size: 50%;
-              background-position: bottom;
+              background-position: center;
               background-repeat: no-repeat;
             }
           }
           &.position-3 {
             &:after {
               content: '3';
-              background: rgba(0, 0, 0, 0.7) url('./big_balloon_logo.png');
+              background: rgba(0, 0, 0, 0.7) url('./sad.png');
               background-size: 50%;
-              background-position: bottom;
+              background-position: center;
               background-repeat: no-repeat;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #categories {
+    // height: 100%;
+    .rankingContainer {
+      .categoriesContainer {
+        .categoria {
+          height: 140px;
+          margin: 9px;
+          width: 140px;
         }
       }
     }
