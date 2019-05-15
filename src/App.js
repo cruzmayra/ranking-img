@@ -1,9 +1,13 @@
 import React from 'react';
 import './App.scss';
+import axios from 'axios'
 
 // Components
 import Welcome from './Components/Welcome'
 import Ranking from './Components/Ranking'
+import Thanks from './Components/Thanks';
+
+const URL = 'https://script.google.com/macros/s/AKfycbyDlPAT_Sh269TKBB7-PQj3eIFkNSxlEpWkkrLhbR5Xi6GnHY4/exec?'
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +20,7 @@ class App extends React.Component {
       ],
       name: '',
       next: false,
+      thanks: false,
       positions: [1,2,3],
       ranking:{}
     }
@@ -86,36 +91,46 @@ class App extends React.Component {
     let string = ''
 
     for(const key in ranking) {
-      string += key + '=' + ranking[key] + ','
+      string += key+ '=' + ranking[key] + '&'
     }
-
-    console.log(string + 'name=' + name)
-
-    // const url = process.env.REACT_APP_GOOGLE_URL
-    // const search = this.props.location.search + '&name=' + name
-
-    // this.sendToGoogle(url, search)
+    
+    const rankingFinal = string + 'nombre=' + name
+    this.sendToGoogle(rankingFinal)
   }
 
-  // sendToGoogle = (url, search) => {
-  //   console.log(url, search)
-  // }
+  sendToGoogle = (rankingFinal) => {
+    const _this = this
+    axios.get(URL + rankingFinal)
+      .then(function (response) {
+        if (response.status === 200) {
+          _this.setState({thanks: true})
+        } else {
+          console.log('ok, otro código')
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+        alert('Oops! Intenta de nuevo')
+      })
+  }
 
   render() {
-    const {next, name, positions, items} = this.state
+    const {next, name, positions, items, thanks} = this.state
     return (
       <div className="App">
         {
-          next
-          ? <Ranking
-              items={items}
-              positions={positions}
-              sendData={this.sendData}
-              toggleSelected={this.toggleSelected} />
-          : <Welcome
-              name={name}
-              handleChange={this.handleChange}
-              handleClick={this.handleClick} />
+          thanks
+          ? <Thanks />
+          : next
+            ? <Ranking
+                items={items}
+                positions={positions}
+                sendData={this.sendData}
+                toggleSelected={this.toggleSelected} />
+            : <Welcome
+                name={name}
+                handleChange={this.handleChange}
+                handleClick={this.handleClick} />
         }
       </div>
     )
